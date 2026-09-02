@@ -21,22 +21,25 @@ env/
 htmlcov/
 .coverage
 
-# Datos, modelos y salidas (no versionar; viven en Drive / Kaggle / HF)
-data/
-datasets/
-checkpoints/
-experiments/
-outputs/
-results/
+# Datos y modelos pesados: no versionar (viven en Kaggle / GitHub Releases / Drive)
+/data/**
+!/data/README.md
+!/data/samples/
+!/data/samples/**
+/datasets/
+/checkpoints/
+/experiments/
+/outputs/
 *.pth
 *.ckpt
 *.onnx
 *.npz
-*.png
-*.jpg
-*.jpeg
-*.tif
-*.tiff
+
+# Resultados del análisis SÍ se versionan (métricas, tablas, figuras).
+# Solo se ignoran binarios muy grandes sueltos:
+*.mp4
+*.avi
+/results/**/*.zip
 
 # Notebooks: permitir los de notebooks/ pero ignorar exports
 notebooks/**/*.html

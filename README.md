@@ -13,11 +13,15 @@ Trabajo Fin de Máster (Máster en IA). El foco está en demostrar la efectivida
 synthetic_degradation/   Paquete de degradación sintética con máscara verdad-de-terreno
 tests/                   Suite de tests (pytest) del paquete
 notebooks/               Notebooks de Colab (fino: importan el paquete desde Drive)
+data/                    Muestras ligeras + procedencia de todos los datasets (data/README.md)
+results/                 Métricas y figuras de la evaluación (results/README.md)
 requirements-degradation.txt
 ```
 
-> Este repo contiene **solo código**. Datasets, checkpoints e imágenes viven fuera
-> (Kaggle / Hugging Face / Google Drive) y están excluidos vía `.gitignore`.
+> El repo contiene el **código** y los **datos ligeros/derivados** necesarios para
+> reproducir el análisis. Los datasets de terceros y los artefactos pesados
+> (dataset sintético completo, checkpoints) se documentan en [`data/README.md`](data/README.md)
+> y se publican como [Releases](../../releases); no se versionan en git.
 
 ### `synthetic_degradation/`
 
