@@ -66,3 +66,7 @@ pytest
 - `shrutimandaokar2301/vintage-degraded-image-synthetic-real` — limpias de referencia + dañadas reales
 - `marcinrutecki/old-photos` — fotos antiguas reales (validación visual, sin GT pareado)
 - DIV2K — HR nítido para el dataset de A-ESRGAN (toneado con `DamageConfig.tone_only()`)
+
+## Licencia
+
+[MIT](LICENSE) © 2026 Javier Riesco. Los modelos y datasets de terceros mantienen sus respectivas licencias.
