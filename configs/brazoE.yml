@@ -1,0 +1,100 @@
+name: brazoE
+model_type: RealESRGANModel_basicsr
+scale: 4
+num_gpu: 1
+manual_seed: 1234
+gt_usm: true
+l1_gt_usm: true
+percep_gt_usm: true
+gan_gt_usm: false
+gt_size: 128
+datasets:
+  train:
+    name: vintage_hr_E
+    type: RealESRGANDatasetEspectral
+    dataroot_gt: /content/fase4c_datos/hr_train_E
+    ruta_parametros: /content/drive/MyDrive/TFM/Fase4b/modulo/parametros_degradacion.json
+    io_backend:
+      type: disk
+    gt_size: 128
+    use_hflip: true
+    use_rot: false
+    use_shuffle: true
+    num_worker_per_gpu: 2
+    batch_size_per_gpu: 2
+    dataset_enlarge_ratio: 1
+    prefetch_mode: null
+network_g:
+  type: RRDBNet
+  num_in_ch: 3
+  num_out_ch: 3
+  num_feat: 64
+  num_block: 23
+  num_grow_ch: 32
+network_d:
+  type: UNetDiscriminatorSN_basicsr
+  num_in_ch: 3
+  num_feat: 64
+  skip_connection: true
+path:
+  pretrain_network_g: /content/A-ESRGAN/experiments/pretrained_models/A_ESRGAN_Single.pth
+  param_key_g: params_ema
+  strict_load_g: false
+  resume_state: null
+train:
+  ema_decay: 0.999
+  optim_g:
+    type: Adam
+    lr: 0.0001
+    weight_decay: 0
+    betas:
+    - 0.9
+    - 0.99
+  optim_d:
+    type: Adam
+    lr: 0.0001
+    weight_decay: 0
+    betas:
+    - 0.9
+    - 0.99
+  scheduler:
+    type: MultiStepLR
+    milestones:
+    - 1500
+    gamma: 0.5
+  total_iter: 2000
+  warmup_iter: -1
+  pixel_opt:
+    type: L1Loss
+    loss_weight: 1.0
+    reduction: mean
+  perceptual_opt:
+    type: PerceptualLoss
+    layer_weights:
+      conv1_2: 0.1
+      conv2_2: 0.1
+      conv3_4: 1.0
+      conv4_4: 1.0
+      conv5_4: 1.0
+    vgg_type: vgg19
+    use_input_norm: true
+    range_norm: false
+    perceptual_weight: 1.0
+    style_weight: 0
+    criterion: l1
+  gan_opt:
+    type: GANLoss
+    gan_type: vanilla
+    real_label_val: 1.0
+    fake_label_val: 0.0
+    loss_weight: 0.1
+  net_d_iters: 1
+  net_d_init_iters: 0
+logger:
+  print_freq: 100
+  save_checkpoint_freq: 100.0
+  use_tb_logger: false
+dist_params:
+  backend: nccl
+  port: 29500
+high_order_degradation: false

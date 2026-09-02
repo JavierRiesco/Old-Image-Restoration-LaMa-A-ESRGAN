@@ -1,0 +1,56 @@
+{
+  "escala": 4,
+  "beta_rango": [
+    0.57319,
+    1.97319
+  ],
+  "sigma_blur_rango": [
+    1.88115,
+    3.48115
+  ],
+  "sigma_grano_rango": [
+    0.032,
+    0.072
+  ],
+  "alpha_grano_rango": [
+    0.775,
+    1.225
+  ],
+  "sigma_escaneo_rango": [
+    0.0,
+    0.012
+  ],
+  "jpeg_rango": [
+    89.2,
+    100.0
+  ],
+  "aniso_prob": 0.3,
+  "aniso_rango": [
+    1.0,
+    1.4
+  ],
+  "periodico_prob": 0.15,
+  "periodico_amplitud": [
+    0.005,
+    0.02
+  ],
+  "periodico_freq": [
+    0.15,
+    0.45
+  ],
+  "procedencia": {
+    "objetivo": "/content/drive/MyDrive/TFM/Fase4a/resultados/psd_objetivo.npz",
+    "banda_calibracion": [
+      0.1,
+      0.45
+    ],
+    "distancia_calibrada": 0.05249052165941513,
+    "distancia_partida": 1.0372452759315167,
+    "distancia_informe": 0.056427264667854325,
+    "distancia_forma": 0.05075139110349925,
+    "suelo_estocastico": 0.02054496491955254,
+    "grano_fijado_a_mano": true,
+    "parches_calibracion": 12,
+    "semilla": 1234
+  }
+}
