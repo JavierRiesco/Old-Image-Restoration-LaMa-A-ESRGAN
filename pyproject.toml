@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "old-image-restoration"
+version = "1.0.0"
+description = "Restauración de fotografía antigua: pipeline LaMa (inpainting) + A-ESRGAN (super-resolución). TFM."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Javier Riesco" }]
+dependencies = [
+    "numpy>=1.26",
+    "opencv-python>=4.8",
+    "pillow>=10.0",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[project.urls]
+Repository = "https://github.com/JavierRiesco/Old-Image-Restoration-LaMa-A-ESRGAN"
+
+[tool.setuptools]
+py-modules = ["colab_setup", "dataset_espectral"]
+
+[tool.setuptools.packages.find]
+include = ["synthetic_degradation*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
