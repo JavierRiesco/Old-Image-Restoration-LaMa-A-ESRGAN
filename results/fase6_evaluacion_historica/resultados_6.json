@@ -1,0 +1,366 @@
+{
+  "conjunto": {
+    "n_total_carpeta": 54,
+    "n_historicas": 21,
+    "n_descartadas_degradacion_moderna": 33,
+    "terminaciones_historicas": [
+      "img1",
+      "img108",
+      "img109",
+      "img11",
+      "img110",
+      "img12",
+      "img173",
+      "img179",
+      "img18",
+      "img20",
+      "img22",
+      "img23",
+      "img24",
+      "img25",
+      "img3",
+      "img34",
+      "img37",
+      "img38",
+      "img40",
+      "img6",
+      "img98"
+    ],
+    "terminaciones_no_encontradas": [],
+    "n_mascara_vacia": 4,
+    "imagenes_mascara_vacia": [
+      "low-resolution-photographs_img110",
+      "low-resolution-photographs_img173",
+      "low-resolution-photographs_img18",
+      "low-resolution-photographs_img23"
+    ],
+    "cobertura_media": 0.05545267325112963,
+    "nombres_calibracion_comprobados": [],
+    "solapamiento_con_calibracion": []
+  },
+  "metricas_ciegas": {
+    "NIQE": {
+      "direccion": "↓",
+      "por_condicion": {
+        "Original degradada": {
+          "NIQE medio": 4.0144,
+          "desv. típica": 1.4573,
+          "mediana": 3.5683
+        },
+        "Pipeline preentrenado": {
+          "NIQE medio": 4.1359,
+          "desv. típica": 1.5331,
+          "mediana": 3.6631
+        },
+        "Pipeline ajustado": {
+          "NIQE medio": 4.2488,
+          "desv. típica": 1.3121,
+          "mediana": 3.8258
+        }
+      }
+    },
+    "BRISQUE": {
+      "direccion": "↓",
+      "por_condicion": {
+        "Original degradada": {
+          "BRISQUE medio": 19.1131,
+          "desv. típica": 11.4106,
+          "mediana": 15.33
+        },
+        "Pipeline preentrenado": {
+          "BRISQUE medio": 17.8854,
+          "desv. típica": 11.1504,
+          "mediana": 13.4461
+        },
+        "Pipeline ajustado": {
+          "BRISQUE medio": 15.71,
+          "desv. típica": 10.2216,
+          "mediana": 12.4515
+        }
+      }
+    },
+    "Ma": {
+      "direccion": "↑",
+      "por_condicion": {
+        "Original degradada": {
+          "Ma medio": 7.2895,
+          "desv. típica": 1.4989,
+          "mediana": 7.5019
+        },
+        "Pipeline preentrenado": {
+          "Ma medio": 5.8954,
+          "desv. típica": 1.1418,
+          "mediana": 5.5988
+        },
+        "Pipeline ajustado": {
+          "Ma medio": 5.7346,
+          "desv. típica": 0.8491,
+          "mediana": 5.7596
+        }
+      }
+    },
+    "PI": {
+      "direccion": "↓",
+      "por_condicion": {
+        "Original degradada": {
+          "PI medio": 3.3625,
+          "desv. típica": 1.06,
+          "mediana": 3.1583
+        },
+        "Pipeline preentrenado": {
+          "PI medio": 4.1202,
+          "desv. típica": 1.2113,
+          "mediana": 3.8863
+        },
+        "Pipeline ajustado": {
+          "PI medio": 4.2571,
+          "desv. típica": 1.0084,
+          "mediana": 3.941
+        }
+      }
+    },
+    "MUSIQ": {
+      "direccion": "↑",
+      "por_condicion": {
+        "Original degradada": {
+          "MUSIQ medio": 49.7281,
+          "desv. típica": 11.8866,
+          "mediana": 52.9202
+        },
+        "Pipeline preentrenado": {
+          "MUSIQ medio": 50.4747,
+          "desv. típica": 11.6621,
+          "mediana": 52.8019
+        },
+        "Pipeline ajustado": {
+          "MUSIQ medio": 49.0674,
+          "desv. típica": 12.096,
+          "mediana": 49.8166
+        }
+      }
+    }
+  },
+  "wilcoxon_metricas_ciegas": [
+    {
+      "Métrica": "NIQE",
+      "A": "Original degradada",
+      "B": "Pipeline preentrenado",
+      "n": 21,
+      "Δ medio (B − A)": 0.1214,
+      "Δ mediana (B − A)": 0.5619,
+      "B mejora": "7/21",
+      "W": 85.0,
+      "p": 0.3038,
+      "p Bonferroni": 0.9114,
+      "Significativo (α=0,05)": "no"
+    },
+    {
+      "Métrica": "NIQE",
+      "A": "Original degradada",
+      "B": "Pipeline ajustado",
+      "n": 21,
+      "Δ medio (B − A)": 0.2343,
+      "Δ mediana (B − A)": 0.5144,
+      "B mejora": "7/21",
+      "W": 82.0,
+      "p": 0.2572,
+      "p Bonferroni": 0.7717,
+      "Significativo (α=0,05)": "no"
+    },
+    {
+      "Métrica": "NIQE",
+      "A": "Pipeline preentrenado",
+      "B": "Pipeline ajustado",
+      "n": 21,
+      "Δ medio (B − A)": 0.1129,
+      "Δ mediana (B − A)": 0.1985,
+      "B mejora": "8/21",
+      "W": 76.0,
+      "p": 0.179,
+      "p Bonferroni": 0.537,
+      "Significativo (α=0,05)": "no"
+    },
+    {
+      "Métrica": "BRISQUE",
+      "A": "Original degradada",
+      "B": "Pipeline preentrenado",
+      "n": 21,
+      "Δ medio (B − A)": -1.2278,
+      "Δ mediana (B − A)": -0.6448,
+      "B mejora": "11/21",
+      "W": 113.0,
+      "p": 0.9457,
+      "p Bonferroni": 1.0,
+      "Significativo (α=0,05)": "no"
+    },
+    {
+      "Métrica": "BRISQUE",
+      "A": "Original degradada",
+      "B": "Pipeline ajustado",
+      "n": 21,
+      "Δ medio (B − A)": -3.4031,
+      "Δ mediana (B − A)": -1.2214,
+      "B mejora": "13/21",
+      "W": 90.0,
+      "p": 0.3926,
+      "p Bonferroni": 1.0,
+      "Significativo (α=0,05)": "no"
+    },
+    {
+      "Métrica": "BRISQUE",
+      "A": "Pipeline preentrenado",
+      "B": "Pipeline ajustado",
+      "n": 21,
+      "Δ medio (B − A)": -2.1754,
+      "Δ mediana (B − A)": -1.8364,
+      "B mejora": "16/21",
+      "W": 62.0,
+      "p": 0.0646,
+      "p Bonferroni": 0.1939,
+      "Significativo (α=0,05)": "no"
+    },
+    {
+      "Métrica": "Ma",
+      "A": "Original degradada",
+      "B": "Pipeline preentrenado",
+      "n": 21,
+      "Δ medio (B − A)": -1.3941,
+      "Δ mediana (B − A)": -1.5937,
+      "B mejora": "4/21",
+      "W": 21.0,
+      "p": 0.0004,
+      "p Bonferroni": 0.0013,
+      "Significativo (α=0,05)": "sí"
+    },
+    {
+      "Métrica": "Ma",
+      "A": "Original degradada",
+      "B": "Pipeline ajustado",
+      "n": 21,
+      "Δ medio (B − A)": -1.5549,
+      "Δ mediana (B − A)": -1.8006,
+      "B mejora": "2/21",
+      "W": 18.0,
+      "p": 0.0002,
+      "p Bonferroni": 0.0007,
+      "Significativo (α=0,05)": "sí"
+    },
+    {
+      "Métrica": "Ma",
+      "A": "Pipeline preentrenado",
+      "B": "Pipeline ajustado",
+      "n": 21,
+      "Δ medio (B − A)": -0.1608,
+      "Δ mediana (B − A)": 0.0167,
+      "B mejora": "11/21",
+      "W": 96.0,
+      "p": 0.5168,
+      "p Bonferroni": 1.0,
+      "Significativo (α=0,05)": "no"
+    },
+    {
+      "Métrica": "PI",
+      "A": "Original degradada",
+      "B": "Pipeline preentrenado",
+      "n": 21,
+      "Δ medio (B − A)": 0.7577,
+      "Δ mediana (B − A)": 1.048,
+      "B mejora": "4/21",
+      "W": 47.0,
+      "p": 0.0158,
+      "p Bonferroni": 0.0473,
+      "Significativo (α=0,05)": "sí"
+    },
+    {
+      "Métrica": "PI",
+      "A": "Original degradada",
+      "B": "Pipeline ajustado",
+      "n": 21,
+      "Δ medio (B − A)": 0.8946,
+      "Δ mediana (B − A)": 1.1177,
+      "B mejora": "2/21",
+      "W": 39.0,
+      "p": 0.0063,
+      "p Bonferroni": 0.0188,
+      "Significativo (α=0,05)": "sí"
+    },
+    {
+      "Métrica": "PI",
+      "A": "Pipeline preentrenado",
+      "B": "Pipeline ajustado",
+      "n": 21,
+      "Δ medio (B − A)": 0.1369,
+      "Δ mediana (B − A)": 0.119,
+      "B mejora": "7/21",
+      "W": 76.0,
+      "p": 0.179,
+      "p Bonferroni": 0.537,
+      "Significativo (α=0,05)": "no"
+    },
+    {
+      "Métrica": "MUSIQ",
+      "A": "Original degradada",
+      "B": "Pipeline preentrenado",
+      "n": 21,
+      "Δ medio (B − A)": 0.7467,
+      "Δ mediana (B − A)": 3.0725,
+      "B mejora": "12/21",
+      "W": 103.0,
+      "p": 0.6827,
+      "p Bonferroni": 1.0,
+      "Significativo (α=0,05)": "no"
+    },
+    {
+      "Métrica": "MUSIQ",
+      "A": "Original degradada",
+      "B": "Pipeline ajustado",
+      "n": 21,
+      "Δ medio (B − A)": -0.6607,
+      "Δ mediana (B − A)": 1.8606,
+      "B mejora": "12/21",
+      "W": 112.0,
+      "p": 0.9187,
+      "p Bonferroni": 1.0,
+      "Significativo (α=0,05)": "no"
+    },
+    {
+      "Métrica": "MUSIQ",
+      "A": "Pipeline preentrenado",
+      "B": "Pipeline ajustado",
+      "n": 21,
+      "Δ medio (B − A)": -1.4073,
+      "Δ mediana (B − A)": -1.2072,
+      "B mejora": "6/21",
+      "W": 65.0,
+      "p": 0.0822,
+      "p Bonferroni": 0.2466,
+      "Significativo (α=0,05)": "no"
+    }
+  ],
+  "contraste_principal_niqe_preentrenado_vs_ajustado": {
+    "p_bonferroni": 0.5369625091552734,
+    "significativo": false
+  },
+  "rostros": {
+    "n_con_rostro_detectado": 20,
+    "n_mascara_solapa_rostro": 10,
+    "umbral_solape": 0.02
+  },
+  "ejemplos_cualitativos": {
+    "seleccionados": [
+      "low-resolution-photographs_img20",
+      "low-resolution-photographs_img109",
+      "low-resolution-photographs_img11",
+      "low-resolution-photographs_img179"
+    ],
+    "mejor_mejora_niqe": [
+      "low-resolution-photographs_img20",
+      "low-resolution-photographs_img109"
+    ],
+    "diferencia_minima_niqe": [
+      "low-resolution-photographs_img11",
+      "low-resolution-photographs_img179"
+    ],
+    "n_candidatos_mascara_no_vacia": 17
+  }
+}
