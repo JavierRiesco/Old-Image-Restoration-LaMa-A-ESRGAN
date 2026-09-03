@@ -12,7 +12,7 @@ documentan aquí con su procedencia exacta y, cuando aplica, se publican como
 |---|---|
 | `data/samples/` | 28 fotografías antiguas reales (subconjunto curado) usadas para la validación **cualitativa** del pipeline. Sin *ground truth* pareado. |
 | `../results/` | Salidas del análisis: métricas (PSNR / SSIM / LPIPS + no-referenciadas), tablas y figuras de evaluación. |
-| `../configs/` | YAML de los brazos A/E/F/G de A-ESRGAN y `parametros_degradacion.json` (rangos calibrados en el notebook 04). |
+| `../configs/` | YAML de los brazos A/E/F/G de A-ESRGAN y `parametros_degradacion.json` (rangos calibrados en el notebook 04). Los YAML conservan las rutas absolutas de las ejecuciones originales en Colab (`dataroot_gt`, `ruta_parametros`, …); el notebook 05 las reescribe en tiempo de ejecución. |
 | `../artifacts/` | Artefactos pequeños de fases previas: `particiones.json` (270/30/30), `psd_objetivo.npz` (objetivo espectral de la Fase 4a), `meta_info_{E,F,G}.txt`, `historicas_21.txt`. |
 | `../dataset_espectral.py` | Clase `RealESRGANDatasetEspectral` para BasicSR (fuente de verdad; el notebook 04 solo la valida). |
 
