@@ -1,0 +1,4 @@
+Comparación,n,Δ medio (b − a),Δ mediana (b − a),Pipeline preentrenado mejor,W,p,p Bonferroni,"Significativo (α=0,05)",Pipeline ajustado mejor
+Original degradada  vs.  Pipeline preentrenado,21,0.12127653647265303,0.561125332848607,7/21,85.0,0.3038158416748047,0.9114475250244141,no,
+Original degradada  vs.  Pipeline ajustado,21,0.23434644528515694,0.5149875055195476,,82.0,0.2572479248046875,0.7717437744140625,no,7/21
+Pipeline preentrenado  vs.  Pipeline ajustado,21,0.11306990881250394,0.1984293253762388,,76.0,0.1789875030517578,0.5369625091552734,no,8/21

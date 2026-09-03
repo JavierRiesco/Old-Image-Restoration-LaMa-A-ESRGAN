@@ -11,7 +11,10 @@ documentan aquí con su procedencia exacta y, cuando aplica, se publican como
 | Ruta | Descripción |
 |---|---|
 | `data/samples/` | 28 fotografías antiguas reales (subconjunto curado) usadas para la validación **cualitativa** del pipeline. Sin *ground truth* pareado. |
-| `../results/` | Salidas del análisis: métricas (PSNR / SSIM / LPIPS), tablas y figuras de evaluación. |
+| `../results/` | Salidas del análisis: métricas (PSNR / SSIM / LPIPS + no-referenciadas), tablas y figuras de evaluación. |
+| `../configs/` | YAML de los brazos A/E/F/G de A-ESRGAN y `parametros_degradacion.json` (rangos calibrados en el notebook 04). Los YAML conservan las rutas absolutas de las ejecuciones originales en Colab (`dataroot_gt`, `ruta_parametros`, …); el notebook 05 las reescribe en tiempo de ejecución. |
+| `../artifacts/` | Artefactos pequeños de fases previas: `particiones.json` (270/30/30), `psd_objetivo.npz` (objetivo espectral de la Fase 4a), `meta_info_{E,F,G}.txt`, `historicas_21.txt`. |
+| `../dataset_espectral.py` | Clase `RealESRGANDatasetEspectral` para BasicSR (fuente de verdad; el notebook 04 solo la valida). |
 
 ## Datasets de terceros (no incluidos — descargar de la fuente)
 
@@ -33,11 +36,17 @@ kaggle datasets download -d shrutimandaokar2301/vintage-degraded-image-synthetic
 - `03_Synthetic_Dataset/Train_Input_Degraded/` — degradadas sintéticas con GT
   pareado por token `imgNN`.
 
-### 3. DIV2K (Kaggle) — dataset HR para A-ESRGAN
-Imágenes nítidas de alta resolución. Se tonean a sepia/B&N con
-`DamageConfig.tone_only()` (preserva nitidez) para obtener el HR "vintage nítido";
-el LR se genera al vuelo con degradación de alto orden tipo Real-ESRGAN.
-> Slug de kagglehub usado: `<COMPLETAR: p. ej. joe1995/div2k-dataset>`
+### 3. DIV2K y Flickr2K (Kaggle) — HR para A-ESRGAN
+Imágenes nítidas de alta resolución. La degradación específica de dominio se
+aplica al vuelo con `RealESRGANDatasetEspectral` (ver `dataset_espectral.py` y los
+rangos de `configs/parametros_degradacion.json`).
+```
+kaggle datasets download -d joe1995/div2k-dataset
+kaggle datasets download -d daehoyang/flickr2k
+```
+- DIV2K: 800 imágenes. El brazo E entrena con 270 (idéntico a la ablación 0/A/C);
+  F y G con 740 (800 − 30 val − 30 test), val/test fijos.
+- Flickr2K: HR adicional para el brazo `F_flick` (variante con más iteraciones).
 
 ## Dataset sintético generado (LaMa) — GitHub Release
 
@@ -45,10 +54,11 @@ Triples `(degradada, gt, máscara)` con el invariante *fuera de la máscara,
 `degradada == gt`*. Generado a partir de `01_Clean_Candidates_GT` con el paquete
 [`synthetic_degradation/`](../synthetic_degradation).
 
-- **Composición:** 146 imágenes limpias × 5 variantes = 730 triples
-  → split sin fuga a nivel de imagen: **585 train / 75 val / 70 test**.
+- **Composición:** ~146 imágenes limpias × 5 variantes → split sin fuga a nivel de
+  imagen: **585 train / 75 val / 70 test** (según la ejecución en Colab).
 - **Estructura:** `lama_synthetic/{train,val,test}/{images,gt,masks}/`
-- **Descarga:** `releases/download/<TAG>/lama_synthetic.zip` *(pendiente de publicar)*
+- **Descarga:** `releases/download/v1.0/lama_synthetic.zip` *(pendiente de subir —
+  ver `scripts/publicar_datos.sh`)*
 
 ### Regeneración desde cero (reproducible)
 
@@ -64,14 +74,24 @@ generate_dataset(
     seed=0,            # semillas deterministas por (imagen, variante)
 )
 ```
-Ver `notebooks/Synthetic_Degradation_clean.ipynb` para el flujo completo en Colab.
+Ver `notebooks/02_degradacion_inpainting.ipynb` para el flujo completo en Colab.
+
+## Fotografías históricas (evaluación) — GitHub Release
+
+`vintage_degraded.zip` — 54 fotografías históricas reales; el notebook 07 filtra a
+las 21 de `artifacts/historicas_21.txt` para la evaluación ciega.
+- **Descarga:** `releases/download/v1.0/vintage_degraded.zip` *(pendiente de subir)*
 
 ## Modelos
 
 | Modelo | Preentrenado | Fine-tuned (este TFM) |
 |---|---|---|
-| LaMa (`advimman/lama`, big-lama) | Hugging Face | Release `<TAG>` → `lama_finetuned.zip` *(pendiente)* |
-| A-ESRGAN (`stroking-fishes-ml-corp/A-ESRGAN`, `A_ESRGAN_Single.pth`, `param_key_g: params_ema`) | GitHub Releases del repo original | Release `<TAG>` → `aesrgan_finetuned.zip` *(pendiente)* |
+| LaMa (`advimman/lama`, big-lama) | Hugging Face | Release `v1.0` → `lama_finetuned.zip` *(pendiente de subir)* |
+| A-ESRGAN (`stroking-fishes-ml-corp/A-ESRGAN`, `A_ESRGAN_Single.pth`, `param_key_g: params_ema`) | GitHub Releases del repo original | Release `v1.0` → `aesrgan_finetuned.zip` (brazo F) *(pendiente de subir)* |
+
+Los 4 assets pendientes (`lama_synthetic.zip`, `lama_finetuned.zip`,
+`aesrgan_finetuned.zip`, `vintage_degraded.zip`) se suben con
+[`scripts/publicar_datos.sh`](../scripts/publicar_datos.sh).
 
 ## Licencias
 

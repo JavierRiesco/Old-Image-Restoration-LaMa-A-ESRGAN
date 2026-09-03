@@ -37,16 +37,20 @@ estadísticamente significativo. Coherente con que A-ESRGAN se entrenó sobre un
 dominio HR (DIV2K toneado) distinto al de estas fotos, y con la baja cobertura de
 máscara (el inpainting apenas interviene). Detalle por imagen en los CSV.
 
-## Archivos (poblar desde `Fase6/` de Drive — ver `scripts/publicar_datos.sh`)
+## Archivos
 
 ```
 fase6_evaluacion_historica/
   resultados_6.json                     resumen agregado + tests de Wilcoxon
   conjunto_6.csv                        composición del conjunto (tamaños, cobertura)
   metricas_ciegas_por_imagen_6.csv      NIQE/BRISQUE/Ma/MUSIQ/PI por imagen y condición
-  niqe_por_imagen_6.csv                 NIQE del cribado inicial (todas las candidatas)
+  niqe_por_imagen_6.csv                 NIQE del cribado inicial (54 candidatas)
   resumen_{niqe,brisque,ma,musiq,pi}_6.csv
   wilcoxon_metricas_ciegas_6.csv        contrastes pareados
+  wilcoxon_niqe_6.csv                   contraste principal de NIQE
   rostros_6.csv                         rostros detectados / solape con máscara
   figuras/*.png                         cualitativa, boxplots, detalle de máscara
 ```
+
+Generados por [`notebooks/07_evaluacion_fotografia_historica.ipynb`](../notebooks/07_evaluacion_fotografia_historica.ipynb).
+Los resultados de LaMa (sección 1) salen del notebook 03; los del pipeline completo, del notebook 06.

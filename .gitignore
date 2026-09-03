@@ -34,6 +34,9 @@ htmlcov/
 *.ckpt
 *.onnx
 *.npz
+# artefactos de fases previas vendorizados (psd_objetivo.npz, etc.)
+!/artifacts/
+!/artifacts/**
 
 # Resultados del análisis SÍ se versionan (métricas, tablas, figuras).
 # Solo se ignoran binarios muy grandes sueltos:
